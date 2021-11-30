@@ -101,7 +101,7 @@ class IssueWidgetCard extends React.Component<Props> {
     errorMessage,
     tableResults,
   }: TableResultProps): React.ReactNode {
-    const {location, organization} = this.props;
+    const {location, organization, widget} = this.props;
     if (errorMessage) {
       return (
         <ErrorPanel>
@@ -120,7 +120,7 @@ class IssueWidgetCard extends React.Component<Props> {
       <StyledSimpleTableChart
         location={location}
         title=""
-        fields={Object.keys(ISSUE_TABLE_FIELDS_META)}
+        fields={widget.queries[0].fields}
         loading={loading}
         metadata={ISSUE_TABLE_FIELDS_META}
         data={transformedTableResults}
